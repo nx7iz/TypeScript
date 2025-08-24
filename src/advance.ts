@@ -49,15 +49,15 @@
 // function greet(name: string | null | undefined) {
 //   if(name)
 //     console.log(name.toUpperCase());
-//   else 
+//   else
 //     console.log('Hola!');
-    
+
 // }
 // greet(undefined);
 
 // Optional Chaining
 // type Customer = {
-//   birthday?: Date 
+//   birthday?: Date
 // }
 
 // function getCustomer(id: number): Customer | null | undefined {
@@ -69,7 +69,7 @@
 
 // // Optional element access operator (Arrays)
 // // if (customers !== null && customers !== undefined)
-// //     customers[0]   
+// //     customers[0]
 // // customers?.[0]
 
 // // Optional call
@@ -106,17 +106,16 @@
 // }
 
 // Never type
-function reject(message: string): never {
-  throw new Error(message);
-}
+// function reject(message: string): never {
+//   throw new Error(message);
+// }
 
-function processEvents(): never {
-  while (true) {
-    // Read a message from a queue
-  }
-}
+// function processEvents(): never {
+//   while (true) {
+//     // Read a message from a queue
+//   }
+// }
 
-// processEvents();
-reject('...');
-console.log('Hello World');
-
+// // processEvents();
+// reject('...');
+// console.log('Hello World');

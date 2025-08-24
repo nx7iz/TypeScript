@@ -3,7 +3,7 @@
 // let course = "TypeScript";
 // let is_published = true;
 
-// any
+// Any
 // let level;
 
 // function render(document) {
@@ -26,7 +26,7 @@
 
 // // PascalCase
 // const enum Size { Small = 1, Medium, Large };
-// let mySize : Size = Size.Small;
+// let mySize: Size = Size.Small;
 // console.log(mySize);
 
 // Functions
