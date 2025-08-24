@@ -37,7 +37,8 @@
     // Recommended Options
     "strict": true,
     // "noImplicitAny": true,
-    "noUnusedLocals": true,
+    // "noUnusedLocals": true,
+    "allowUnreachableCode": false,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "jsx": "react-jsx",
