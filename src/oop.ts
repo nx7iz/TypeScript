@@ -1,4 +1,4 @@
-// // class is a blueprint for creating a object
+// // Class, Access specifiers, getter/setter
 // class Account {
 //   nickname?: string;
 
@@ -8,38 +8,48 @@
 //     private _balance: number
 //   ) {}
 
-//   deposit(amount: number) {
+//   deposit(amount: number): void {
 //     if (amount <= 0) throw new Error("Invalid amount");
 //     this._balance += amount;
 //   }
 
-//   private calculateTax() {}
-
-//   get balance() {
+//   calculateTax() {}
+//   get balance(): number {
 //     return this._balance;
 //   }
+
+//   // set balance(value: number) {
+//   //   if (value < 0)
+//   //     throw new Error("Invalid value");
+//   //   this._balance = value;
+//   // }
 // }
 
-// let account = new Account(1, "John", 0);
+// let account = new Account(1, "Noman", 0);
+// account.deposit(100);
+// // console.log(account instanceof Account);
 // console.log(account.balance);
 
+// // Index signature property (special property)
 // class SeatAssignment {
-//   // A1: string
-//   // A2: string
+//   // Index signature property (special property)
 //   [seatNumber: string]: string;
 // }
 
 // let seats = new SeatAssignment();
-// seats.A1 = "Liqx";
-// seats["A1"] = "Liqx";
-// seats.A1 = "Arceus";
+// seats.A1 = "Noman";
+// seats["A1"] = "Noman";
+// seats.A2 = "Liqx";
+// console.log(seats);
 
+// // Static members
 // class Ride {
 //   private static _activeRides: number = 0;
 
 //   start() {
 //     Ride._activeRides++;
 //   }
+
 //   stop() {
 //     Ride._activeRides--;
 //   }
@@ -57,12 +67,16 @@
 
 // console.log(Ride.activeRides);
 
+// // Inheritance
 // class Person {
 //   constructor(public firstName: string, public lastName: string) {}
+
 //   get fullName() {
 //     return this.firstName + " " + this.lastName;
 //   }
-//   walk() {}
+//   walk() {
+//     console.log("Walking");
+//   }
 // }
 
 // class Student extends Person {
@@ -71,7 +85,7 @@
 //   }
 
 //   takeTest() {
-//     console.log("Taking a test.");
+//     console.log("Taking a test");
 //   }
 // }
 
@@ -87,15 +101,20 @@
 //   }
 // }
 
+// // let teacher = new Teacher("John", "Smith");
+// // console.log(teacher.fullName);
+
 // printNames([
 //   new Student(1, "John", "Smith"),
-//   new Teacher("Mary", "Green"),
-//   new Principal("Arceux", "Helios"),
+//   new Teacher("Arceus", "Helios"),
+//   new Principal("Selene", "Helen"),
 // ]);
 
 // function printNames(people: Person[]) {
 //   for (let person of people) console.log(person.fullName);
 // }
+
+// Abstract classes and methods
 
 // abstract class Shape {
 //   constructor(public color: string) {}
@@ -107,15 +126,16 @@
 //   constructor(public radius: number, color: string) {
 //     super(color);
 //   }
-
 //   override render(): void {
-//     console.log("Rendering a circle");
+//     console.log('Rendering a circle');
+
 //   }
 // }
 
-// let shape = new Shape("red");
+// let shape = new Shape('red');
 // shape.render();
 
+// Interfaces -> define the shape of an object
 // abstract class Calender {
 //   constructor(public name: string) {}
 
@@ -135,11 +155,10 @@ interface CloudCalender extends Calender {
 
 class GoogleCalender implements Calender {
   constructor(public name: string) {}
-  
+
   addEvent(): void {
     throw new Error("Method not implemented.");
   }
-  
   removeEvent(): void {
     throw new Error("Method not implemented.");
   }

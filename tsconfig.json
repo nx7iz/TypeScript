@@ -38,6 +38,7 @@
     "strict": true,
     // "noImplicitAny": true,
     // "noUnusedLocals": true,
+    "noImplicitOverride": true,
     "allowUnreachableCode": false,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
