@@ -1,146 +1,49 @@
-// // class is a blueprint for creating a object
-// class Account {
-//   nickname?: string;
+class Logger {
+  constructor(public fileName: string) {}
 
-//   constructor(
-//     public readonly id: number,
-//     public owner: string,
-//     private _balance: number
-//   ) {}
+  writeMessage(message: string) {
+    console.log(message);
+  }
+}
 
-//   deposit(amount: number) {
-//     if (amount <= 0) throw new Error("Invalid amount");
-//     this._balance += amount;
-//   }
+// let file1 = new Logger(".txt");
+// file1.writeMessage('Wriiting a message to file');
 
-//   private calculateTax() {}
+class Person {
+  constructor(public firstName: string, public lastName: string) {}
 
-//   get balance() {
-//     return this._balance;
-//   }
-// }
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+let person = new Person("Helios", "Selene");
+console.log(person.fullName);
 
-// let account = new Account(1, "John", 0);
-// console.log(account.balance);
-
-// class SeatAssignment {
-//   // A1: string
-//   // A2: string
-//   [seatNumber: string]: string;
-// }
-
-// let seats = new SeatAssignment();
-// seats.A1 = "Liqx";
-// seats["A1"] = "Liqx";
-// seats.A1 = "Arceus";
-
-// class Ride {
-//   private static _activeRides: number = 0;
-
-//   start() {
-//     Ride._activeRides++;
-//   }
-//   stop() {
-//     Ride._activeRides--;
-//   }
-
-//   static get activeRides() {
-//     return Ride._activeRides;
-//   }
-// }
-
-// let ride1 = new Ride();
-// ride1.start();
-
-// let ride2 = new Ride();
-// ride2.start();
-
-// console.log(Ride.activeRides);
-
-// class Person {
-//   constructor(public firstName: string, public lastName: string) {}
-//   get fullName() {
-//     return this.firstName + " " + this.lastName;
-//   }
-//   walk() {}
-// }
-
-// class Student extends Person {
-//   constructor(public studentId: number, firstName: string, lastName: string) {
+// class Employee extends Person {
+//   constructor(public salary: number, firstName: string, lastName: string) {
 //     super(firstName, lastName);
 //   }
-
-//   takeTest() {
-//     console.log("Taking a test.");
-//   }
 // }
 
-// class Teacher extends Person {
-//   override get fullName() {
-//     return "Professor " + super.fullName;
-//   }
-// }
+interface Address {
+  street: string;
+  city: string;
+  zipCode: number;
+}
 
-// class Principal extends Person {
-//   override get fullName() {
-//     return "Principal " + super.fullName;
-//   }
-// }
-
-// printNames([
-//   new Student(1, "John", "Smith"),
-//   new Teacher("Mary", "Green"),
-//   new Principal("Arceux", "Helios"),
-// ]);
-
-// function printNames(people: Person[]) {
-//   for (let person of people) console.log(person.fullName);
-// }
-
-// abstract class Shape {
-//   constructor(public color: string) {}
-
-//   abstract render(): void;
-// }
-
-// class Circle extends Shape {
-//   constructor(public radius: number, color: string) {
-//     super(color);
-//   }
-
-//   override render(): void {
-//     console.log("Rendering a circle");
-//   }
-// }
-
-// let shape = new Shape("red");
-// shape.render();
-
-// abstract class Calender {
-//   constructor(public name: string) {}
-
-//   abstract addEvent(): void;
-//   abstract removeEvent(): void;
-// }
-
-interface Calender {
+interface Employee {
   name: string;
-  addEvent(): void;
-  removeEvent(): void;
+  salary: number;
+  address: Address;
 }
 
-interface CloudCalender extends Calender {
-  sync(): void;
-}
-
-class GoogleCalender implements Calender {
-  constructor(public name: string) {}
-  
-  addEvent(): void {
-    throw new Error("Method not implemented.");
-  }
-  
-  removeEvent(): void {
-    throw new Error("Method not implemented.");
-  }
-}
+let employee: Employee = {
+  name: "John Smith",
+  salary: 50_000,
+  address: {
+    street: "Flinders st",
+    city: "Melbourne",
+    zipCode: 3144,
+  },
+};
+console.log(employee);
