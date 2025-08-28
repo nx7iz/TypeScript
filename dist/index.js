@@ -1,35 +1,42 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Logger {
-    fileName;
-    constructor(fileName) {
-        this.fileName = fileName;
-    }
-    writeMessage(message) {
-        console.log(message);
-    }
-}
-class Person {
-    firstName;
-    lastName;
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    get fullName() {
-        return `${this.firstName}${this.lastName}`;
+class Employee {
+    id;
+    name;
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
     }
 }
-let person = new Person("Helios", "Selene");
-console.log(person.fullName);
-let employee = {
-    name: "John Smith",
-    salary: 50_000,
-    address: {
-        street: "Flinders st",
-        city: "Melbourne",
-        zipCode: 3144,
-    },
-};
-console.log(employee);
+class SalariedEmployee extends Employee {
+    salary;
+    constructor(id, name, salary) {
+        super(id, name);
+        this.salary = salary;
+    }
+    calculatePay() {
+        return this.salary;
+    }
+}
+class HourlyEmployee extends Employee {
+    hourlyRate;
+    hoursWorked;
+    constructor(id, name, hourlyRate, hoursWorked) {
+        super(id, name);
+        this.hourlyRate = hourlyRate;
+        this.hoursWorked = hoursWorked;
+    }
+    calculatePay() {
+        return this.hourlyRate * this.hoursWorked;
+    }
+}
+let salariedEmployee = new SalariedEmployee(1, "Liqx", 10_000);
+let hourlyEmployee = new HourlyEmployee(2, "Arceus", 20, 18);
+let payroll = [salariedEmployee, hourlyEmployee];
+function processPayroll(employees) {
+    for (let employee of employees) {
+        console.log(`${employee.name}\nBasic Pay: ${employee.calculatePay()}`);
+    }
+}
+processPayroll(payroll);
 //# sourceMappingURL=index.js.map
