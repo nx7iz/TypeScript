@@ -1,42 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Employee {
-    id;
-    name;
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
-    }
+function getFirstString(arr) {
+    return arr[0];
 }
-class SalariedEmployee extends Employee {
-    salary;
-    constructor(id, name, salary) {
-        super(id, name);
-        this.salary = salary;
-    }
-    calculatePay() {
-        return this.salary;
-    }
+let names = ["Alice", "Bob", "Charles"];
+let numbers = [10, 20, 30];
+let objects = [
+    { name: "Alice", age: 21 },
+    { name: "Selene", age: 42 },
+];
+function getFirstElement(arr) {
+    return arr[0];
 }
-class HourlyEmployee extends Employee {
-    hourlyRate;
-    hoursWorked;
-    constructor(id, name, hourlyRate, hoursWorked) {
-        super(id, name);
-        this.hourlyRate = hourlyRate;
-        this.hoursWorked = hoursWorked;
-    }
-    calculatePay() {
-        return this.hourlyRate * this.hoursWorked;
-    }
-}
-let salariedEmployee = new SalariedEmployee(1, "Liqx", 10_000);
-let hourlyEmployee = new HourlyEmployee(2, "Arceus", 20, 18);
-let payroll = [salariedEmployee, hourlyEmployee];
-function processPayroll(employees) {
-    for (let employee of employees) {
-        console.log(`${employee.name}\nBasic Pay: ${employee.calculatePay()}`);
-    }
-}
-processPayroll(payroll);
+console.log(getFirstElement(names));
+console.log(getFirstElement(numbers));
+console.log(getFirstElement(objects));
 //# sourceMappingURL=index.js.map
