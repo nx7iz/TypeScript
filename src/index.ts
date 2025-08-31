@@ -99,11 +99,12 @@ let popArray: number[] = [1, 2, 3, 4];
 
 // 1
 function swap<T>(arr: T[], index1: number, index2: number): (T | undefined)[] {
-  let newArray = [...arr];
+  // let newArray: T[] = [...arr];
+  let newArray = [];
 
-  // for (let i = 0; i < arr.length; i++) {
-  //   newArray[i] = arr[i];
-  // }
+  for (let i = 0; i < arr.length; i++) {
+    newArray[i] = arr[i];
+  }
 
   let temp = arr[index1];
   newArray[index1] = arr[index2];
@@ -154,3 +155,33 @@ let userContainer = new Container<{ name: string } | null>(null);
 console.log(userContainer.getItem());
 userContainer.setItem({ name: "Arceus" });
 console.log(userContainer.getItem());
+
+class Person {
+  constructor(public name: string) {}
+}
+
+function echo(value: Person): Person {
+  return value;
+}
+
+echo(new Person("helo"));
+
+function printName<T extends { name: string }>(obj: T) {
+  console.log(obj.name);
+}
+
+class Entity<T> {
+  constructor(public id: T) {}
+}
+
+let stringId = new Entity<string>("abc");
+let numberId = new Entity<number>(1);
+
+interface User {
+  userId: number;
+  username: string;
+}
+
+let user: Partial<User> = { userId: 1, username: "a" };
+
+console.log(user);

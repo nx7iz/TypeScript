@@ -126,14 +126,17 @@ interface Product {
 }
 
 type ReadOnly<T> = {
+  // readonly [Property in keyof Product]: Product[Property];
   readonly [K in keyof T]: T[K];
 };
 
 type Optional<T> = {
   [K in keyof T]?: T[K];
-}
+};
 
 let product: ReadOnly<Product> = {
   name: "a",
   price: 1,
 };
+
+console.log(product.name);
