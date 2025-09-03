@@ -10,6 +10,7 @@
     "module": "nodenext",
     "target": "esnext",
     "types": [],
+    "experimentalDecorators": true,
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -40,13 +41,14 @@
     // "noUnusedLocals": true,
     "noImplicitOverride": true,
     "allowUnreachableCode": false,
-    "noUnusedParameters": true,
+    // "noUnusedParameters": true,
     "noImplicitReturns": true,
     "jsx": "react-jsx",
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "useDefineForClassFields": false
   }
 }

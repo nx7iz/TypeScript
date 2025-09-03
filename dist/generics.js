@@ -4,4 +4,5 @@ let product = {
     name: "a",
     price: 1,
 };
+console.log(product.name);
 //# sourceMappingURL=generics.js.map
