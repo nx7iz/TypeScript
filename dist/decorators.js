@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 function Component(constructor) {
     console.log("Component decorator called.");
     constructor.prototype.unqiueId = Date.now();
@@ -35,5 +37,4 @@ __decorate([
     __param(0, Watch)
 ], Vehicle.prototype, "move", null);
 console.log(watchedParameters);
-export {};
 //# sourceMappingURL=decorators.js.map
