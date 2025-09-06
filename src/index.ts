@@ -267,15 +267,111 @@
 // let user = new Contact("abc@gmail.com");
 // console.log(user.email);
 
-function Sauce(value: string) {
-  return (constructor: Function) => {
-    console.log("Decorator constructor called");
+// function Sauce(sauce: string) {
+//   return (constructor: Function) => {
+//     constructor.prototype.sauce = sauce;
+//   };
+// }
 
-    constructor.prototype.sauce = value;
+// @Sauce("pesto")
+// class Pizza {
+//   sauce?: string;
+// }
+
+// let pizza = new Pizza();
+// console.log(pizza.sauce);
+
+// function Log(constructor: Function) {
+//   return class extends constructor {
+//     constructor(...args: any) {
+//       let currentTime = new Date().toLocaleString();
+//       console.log(
+//         `${constructor.name} class instance created at ${currentTime}.`
+//       );
+//     }
+//   };
+// }
+
+// @Log
+// class Person {
+//   constructor(public name: string) {}
+// }
+
+// let person = new Person("Alice");
+
+function Timer(
+  target: any,
+  methodName: string,
+  descriptor: PropertyDescriptor
+) {
+  let original = descriptor.value;
+  let milliseconds = new Date().getMilliseconds();
+  descriptor.value = function () {
+    console.log(`${target.name}.${methodName} took ${milliseconds}ms`);
   };
 }
 
-@Sauce("pesto")
-class Pizza {}
-let pizza = new Pizza();
-// pizza.sauce;
+class Calculator {
+  @Timer
+  calculateSum(a: number, b: number): number {
+    const start = performance.now();
+    while (performance.now() - start < 500) {}
+    return a + b;
+  }
+}
+
+let calculator = new Calculator();
+calculator.calculateSum(1, 2);
+
+function NonNegative(target: any, propertyName: string) {
+  let value: number;
+  const descriptor: PropertyDescriptor = {
+    set(newValue: number) {
+      return newValue < 0 ? (value = 0) : (value = newValue);
+    },
+    get() {
+      return value;
+    },
+  };
+  Object.defineProperty(target, propertyName, descriptor);
+}
+
+class Wallet {
+  @NonNegative
+  public balance: number = 100;
+}
+const myWallet = new Wallet();
+console.log(myWallet.balance);
+
+myWallet.balance = -5;
+console.log(myWallet.balance);
+
+function Validate(
+  target: any,
+  methodName: string,
+  descriptor: PropertyDescriptor
+) {
+  let original = descriptor.value;
+  descriptor.value = function() {
+    
+  }
+}
+
+function ValidateEmail(
+  target: any,
+  methodName: string,
+  parameterIndex: number
+) {
+  Reflect.defineProperty(target, methodName, parameterIndex)  
+}
+
+class UserService {
+  @Validate
+  registerUser(@ValidateEmail email: string, password: string): void {
+    console.log(`Registering user with email: ${email}`);
+  }
+}
+
+const userService = new UserService();
+userService.registerUser("abc@gmail.com", "password123");
+userService.registerUser("abc@gmail", "password123");

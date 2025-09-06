@@ -5,15 +5,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-function IsEmail(target, propertyName) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function Timer(target, methodName, descriptor) {
+    let original = descriptor.value;
+    let milliseconds = new Date().getMilliseconds();
+    descriptor.value = function () {
+        console.log(`${target.name}.${methodName} took ${milliseconds}ms`);
+    };
+}
+class Calculator {
+    calculateSum(a, b) {
+        const start = performance.now();
+        while (performance.now() - start < 500) { }
+        return a + b;
+    }
+}
+__decorate([
+    Timer
+], Calculator.prototype, "calculateSum", null);
+let calculator = new Calculator();
+calculator.calculateSum(1, 2);
+function NonNegative(target, propertyName) {
     let value;
     const descriptor = {
         set(newValue) {
-            if (!emailRegex.test(newValue))
-                throw new Error(`Please provide a valid ${propertyName} address`);
-            value = newValue;
+            return newValue < 0 ? (value = 0) : (value = newValue);
         },
         get() {
             return value;
@@ -21,26 +40,32 @@ function IsEmail(target, propertyName) {
     };
     Object.defineProperty(target, propertyName, descriptor);
 }
-class Contact {
-    constructor(email) {
-        this.email = email;
+class Wallet {
+    constructor() {
+        this.balance = 100;
     }
 }
 __decorate([
-    IsEmail
-], Contact.prototype, "email", void 0);
-let user = new Contact("abc@gmail.com");
-console.log(user.email);
-function Sauce(value) {
-    return (constructor) => {
-        console.log('Decorator constructor called');
-        constructor.prototype.sauce = value;
-    };
+    NonNegative
+], Wallet.prototype, "balance", void 0);
+const myWallet = new Wallet();
+console.log(myWallet.balance);
+myWallet.balance = -5;
+console.log(myWallet.balance);
+function Validate(target, methodName, descriptor) { }
+function ValidateEmail(target, methodName, parameterIndex) {
+    console.log(methodName);
 }
-let Pizza = class Pizza {
-};
-Pizza = __decorate([
-    Sauce("pesto")
-], Pizza);
-let pizza = new Pizza();
+class UserService {
+    registerUser(email, password) {
+        console.log(`Registering user with email: ${email}`);
+    }
+}
+__decorate([
+    Validate,
+    __param(0, ValidateEmail)
+], UserService.prototype, "registerUser", null);
+const userService = new UserService();
+userService.registerUser("abc@gmail.com", "password123");
+userService.registerUser("abc@gmail", "password123");
 //# sourceMappingURL=index.js.map

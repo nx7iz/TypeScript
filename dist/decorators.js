@@ -9,6 +9,20 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+function Component(constructor) {
+    console.log("Component decorator called.");
+    constructor.prototype.unqiueId = Date.now();
+    constructor.prototype.insertInDOM = () => {
+        console.log("Inserting the component in the DOM");
+    };
+}
+let ProfileComponent = class ProfileComponent {
+    constructor() { }
+};
+ProfileComponent = __decorate([
+    Component
+], ProfileComponent);
+let profile = new ProfileComponent();
 const watchedParameters = [];
 function Watch(target, methodName, parameterIndex) {
     watchedParameters.push({
