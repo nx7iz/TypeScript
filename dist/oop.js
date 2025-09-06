@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class GoogleCalender {
     constructor(name) {
         this.name = name;
@@ -11,4 +9,5 @@ class GoogleCalender {
         throw new Error("Method not implemented.");
     }
 }
+export {};
 //# sourceMappingURL=oop.js.map

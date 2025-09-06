@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +7,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 function Timer(target, methodName, descriptor) {
     let original = descriptor.value;
     let milliseconds = new Date().getMilliseconds();
@@ -52,9 +50,13 @@ const myWallet = new Wallet();
 console.log(myWallet.balance);
 myWallet.balance = -5;
 console.log(myWallet.balance);
-function Validate(target, methodName, descriptor) { }
+function Validate(target, methodName, descriptor) {
+    let original = descriptor.value;
+    descriptor.value = function () {
+    };
+}
 function ValidateEmail(target, methodName, parameterIndex) {
-    console.log(methodName);
+    Reflect.defineProperty(target, methodName, parameterIndex);
 }
 class UserService {
     registerUser(email, password) {
@@ -68,4 +70,5 @@ __decorate([
 const userService = new UserService();
 userService.registerUser("abc@gmail.com", "password123");
 userService.registerUser("abc@gmail", "password123");
+export {};
 //# sourceMappingURL=index.js.map

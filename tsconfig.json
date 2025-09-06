@@ -7,7 +7,8 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
+    "module": "es2015",
+    "moduleResolution": "node",
     "target": "esnext",
     "types": [],
     "experimentalDecorators": true,
@@ -44,7 +45,7 @@
     // "noUnusedParameters": true,
     "noImplicitReturns": true,
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",

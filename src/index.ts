@@ -353,7 +353,7 @@ function Validate(
 ) {
   let original = descriptor.value;
   descriptor.value = function() {
-    
+
   }
 }
 
