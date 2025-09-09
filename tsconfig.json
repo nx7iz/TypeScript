@@ -7,11 +7,10 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "target": "esnext",
-    "types": [],
-    "experimentalDecorators": true,
+    "types": ["node"],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -21,8 +20,6 @@
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-    "removeComments": true,
-    "noEmitOnError": true,
 
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
@@ -38,16 +35,17 @@
 
     // Recommended Options
     "strict": true,
-    "noImplicitAny": true,
-    "allowUnreachableCode": false,
     "jsx": "react-jsx",
     "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
-    "useDefineForClassFields": false,
-    "allowJs": true,
-    "checkJs": true
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "allowUnreachableCode": false,
+
+
   }
 }

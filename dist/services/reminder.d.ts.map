@@ -1,0 +1,1 @@
+{"version":3,"file":"reminder.d.ts","sourceRoot":"","sources":["../../reminders-app/src/services/reminder.ts"],"names":[],"mappings":"AACA,OAAO,QAAQ,MAAM,oBAAoB,CAAC;AAE1C,cAAM,eAAe;IACnB,IAAI,gCAED;IAEG,YAAY;IAKZ,UAAU,CAAC,KAAK,EAAE,MAAM;IAKxB,cAAc,CAAC,EAAE,EAAE,MAAM;CAIhC;;AAED,wBAAqC"}

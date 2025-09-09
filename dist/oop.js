@@ -1,6 +1,10 @@
 "use strict";
+// // Class, Access specifiers, getter/setter
+// class Account {
+//   nickname?: string;
 Object.defineProperty(exports, "__esModule", { value: true });
 class GoogleCalender {
+    name;
     constructor(name) {
         this.name = name;
     }

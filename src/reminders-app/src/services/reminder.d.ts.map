@@ -1,0 +1,1 @@
+{"version":3,"file":"reminder.d.ts","sourceRoot":"","sources":["reminder.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAC1B,OAAO,QAAQ,MAAM,oBAAoB,CAAC;AAE1C,cAAM,eAAe;IACnB,IAAI,sBAED;IAEG,YAAY;IAKZ,UAAU,CAAC,KAAK,EAAE,MAAM;IAKxB,cAAc,CAAC,EAAE,EAAE,MAAM;CAIhC;AACD,QAAA,MAAM,eAAe,iBAAwB,CAAA;AAC7C,eAAe,eAAe,CAAC"}
